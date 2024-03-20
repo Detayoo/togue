@@ -21,18 +21,20 @@ export default function Home() {
     return recentPublications.map((publication: RecentPublicationType) => {
       return (
         <div key={publication?.id}>
-          <div className="relative w-[400px] h-[400px] m:min-w-full m:h-[300px] ">
+          <div className="relative w-[350px] h-[290px] m:w-[366px] m:h-[290px] ">
             <Image
               src={publication?.thumbnail}
               alt={`publication thumbnail by ${publication?.author}`}
               layout="fill"
-              className="hover:scale-110 animation"
+              className="hover:scale-110 animation m:hover:scale-75"
             />
           </div>
-          <p className="mt-3 uppercase font-SpaceMono-Bold">
-            {publication?.category}
-          </p>
-          <p className="mt-1">{publication?.title}</p>
+          <div className="hover:underline cursor-pointer">
+            <p className="mt-3 uppercase font-SpaceMono-Bold">
+              {publication?.category}
+            </p>
+            <p className="mt-1">{publication?.title}</p>
+          </div>
         </div>
       );
     });
@@ -48,7 +50,7 @@ export default function Home() {
             <p className="font-SpaceMono-Bold mb-6 uppercase text-[18px]">
               Recent Publications
             </p>
-            <div className="min-w-[100%] overflow-x-auto flex gap-x-5">
+            <div className="min-w-[100%] overflow-x-auto flex gap-x-10">
               {renderRecentPublications()}
             </div>
           </div>
