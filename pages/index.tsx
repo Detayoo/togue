@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Header, PageTitle } from "@/components";
 import { recentPublications } from "@/data";
 import { RecentPublicationType } from "@/types";
-import { Spinner } from "@/components/Spinner";
+import { Spinner } from "@/components";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
