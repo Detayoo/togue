@@ -10,7 +10,8 @@ root {
 }
 
 * {
-  color: #052164 !important;
+  /* color: #052164 !important; */
+  color: black;
 }
 
 @layer utilities {
@@ -31,7 +32,7 @@ root {
     src: url("/fonts/SpaceMono-Regular.ttf");
   }
   @font-face {
-    font-family: "SpaceMonoBold";
+    font-family: "SpaceMono-Bold";
     src: url("/fonts/SpaceMono-Bold.ttf");
   }
 
@@ -49,4 +50,26 @@ root {
     background-color: rgba(0, 0, 0, 0.4);
     border-radius: 20rem;
   }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animation {
+  transition: all 0.3s ease-in-out;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: black;
+  animation: spin 0.5s linear infinite;
 }

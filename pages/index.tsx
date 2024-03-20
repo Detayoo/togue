@@ -1,11 +1,58 @@
-import { Header } from "@/components";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+
+import { Header, PageTitle } from "@/components";
+import { recentPublications } from "@/data";
+import { RecentPublicationType } from "@/types";
+import { Spinner } from "@/components/Spinner";
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }, []);
+
+  const renderRecentPublications = () => {
+    if (isLoading) return <Spinner />;
+
+    return recentPublications.map((publication: RecentPublicationType) => {
+      return (
+        <div key={publication?.id}>
+          <div className="relative w-[400px] h-[400px] m:min-w-full m:h-[300px] ">
+            <Image
+              src={publication?.thumbnail}
+              alt={`publication thumbnail by ${publication?.author}`}
+              layout="fill"
+              className="hover:scale-110 animation"
+            />
+          </div>
+          <p className="mt-3 uppercase font-SpaceMono-Bold">
+            {publication?.category}
+          </p>
+          <p className="mt-1">{publication?.title}</p>
+        </div>
+      );
+    });
+  };
+
   return (
     <div className="w-full">
+      <PageTitle name="Togue" />
       <div className="max-w-[1300px] mx-auto text-white px-10 m:px-0 h-screen">
         <Header />
-        <div className="h-[90vh] overflow-y-auto m:px-10 py-5 text-sm"></div>
+        <div className="h-[90vh] overflow-y-auto m:px-6 py-5 text-sm">
+          <div>
+            <p className="font-SpaceMono-Bold mb-6 uppercase text-[18px]">
+              Recent Publications
+            </p>
+            <div className="min-w-[100%] overflow-x-auto flex gap-x-5">
+              {renderRecentPublications()}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
