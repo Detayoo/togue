@@ -18,6 +18,9 @@ const config: Config = {
       tab: { min: "769px", max: "900px" },
     },
     extend: {
+      colors: {
+        "primary-color": "var(--primary-color)",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

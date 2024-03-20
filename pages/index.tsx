@@ -1,5 +1,11 @@
+import { Header } from "@/components";
+
 export default function Home() {
-  return <div>
-    <p>Hello, you!</p>
-  </div>;
+  return (
+    <div className="w-full">
+      <div className="max-w-[1300px] mx-auto text-white px-10">
+        <Header />
+      </div>
+    </div>
+  );
 }
