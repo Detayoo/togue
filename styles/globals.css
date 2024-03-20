@@ -2,26 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"); */
-
 root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --primary-color: #052164;
+  --primary-color: 5, 33, 100;
 }
 
-body,
-html,
 * {
-  margin: 0;
-  padding: 0;
-  color: var(--primary-color) !important;
+  color: #052164 !important;
 }
 
 @layer utilities {
   body {
     font-family: "SpaceMono", monospace;
+    margin: 0;
+    padding: 0;
   }
 
   .text-balance {
