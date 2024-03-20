@@ -14,7 +14,8 @@ const config: Config = {
       md: { max: "1024px" },
       sm: { max: "768px" },
       "2xs": { max: "640px" },
-      xs: { max: "400px" },
+      m: { max: "520px" },
+      i: { max: "420px" },
       tab: { min: "769px", max: "900px" },
     },
     extend: {
