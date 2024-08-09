@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-import { Header, PageTitle } from "@/components";
+import { Header, PageTitle, Spinner } from "@/components";
 import { recentPublications } from "@/data";
 import { RecentPublicationType } from "@/types";
-import { Spinner } from "@/components";
+import { AuthRoute } from "@/utils";
 
-export default function Home() {
+const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -58,4 +58,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default AuthRoute(Home);
