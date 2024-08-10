@@ -5,6 +5,6 @@ export const Logo = () => (
     onClick={() => Router.push("/")}
     className="text-[20px] uppercase cursor-pointer"
   >
-    Togue
+    togue
   </p>
 );

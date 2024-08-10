@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Router from "next/router";
 import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 
@@ -20,6 +21,7 @@ const Login = () => {
           `dear cool kid, you have ${error?.message?.toLowerCase()}`
         );
       }
+      Router.push("/");
       return toast.success("welcome back, cool kid");
     },
     onError: (error) => {

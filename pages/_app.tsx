@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <AuthProvider>
         <Component {...pageProps} />
       </AuthProvider>
-      <ToastContainer limit={2} />
+      <ToastContainer limit={1} />
     </QueryClientProvider>
   );
 }
