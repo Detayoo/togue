@@ -4,11 +4,12 @@ import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 
 import { loginFn } from "@/api";
+import { BlackButton } from "@/components";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { mutateAsync } = useMutation({
+  const { mutateAsync, isPending } = useMutation({
     mutationFn: loginFn,
     onSuccess: ({ error }) => {
       if (error?.message?.toLowerCase() == "email not confirmed") {
@@ -56,7 +57,7 @@ const Login = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button>Submit</button>
+      <BlackButton label="let's go!" disabled={isPending} />
     </form>
   );
 };
