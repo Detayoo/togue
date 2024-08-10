@@ -3,11 +3,12 @@ import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 
 import { signUpFn } from "@/api";
+import { BlackButton } from "@/components";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { mutateAsync } = useMutation({
+  const { mutateAsync, isPending } = useMutation({
     mutationFn: signUpFn,
     onSuccess: ({ error }) => {
       if (error) {
@@ -34,20 +35,27 @@ const Login = () => {
       autoComplete="off"
       className="flex gap-y-4 flex-col justify-center items-center h-screen"
     >
-      <input
-        type="email"
-        className="h-11 bg-slate-200"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="text"
-        className="h-11 bg-slate-200"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <div className="flex gap-y-4 flex-col">
+        <input
+          type="email"
+          className="h-11 bg-slate-200"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="text"
+          className="h-11 bg-slate-200"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-      <button>Submit</button>
+        <BlackButton
+          // onClick={() => setShowModal(true)}
+          // type="button"
+          label="join the cool kids!"
+          disabled={isPending}
+        />
+      </div>
     </form>
   );
 };
