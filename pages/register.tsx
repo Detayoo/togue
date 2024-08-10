@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
+import Router from "next/router";
 
 import { signUpFn } from "@/api";
 import { BlackButton } from "@/components";
@@ -54,7 +55,15 @@ const Login = () => {
           // type="button"
           label="join the cool kids!"
           disabled={isPending}
+          icon
         />
+
+        <p className="text-sm">
+          already a cool kid??{" "}
+          <button type="button" onClick={() => Router.push("/login")}>
+            login
+          </button>
+        </p>
       </div>
     </form>
   );

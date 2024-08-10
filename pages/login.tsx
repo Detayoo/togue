@@ -67,6 +67,7 @@ const Login = () => {
           // type="button"
           label="let's go!"
           disabled={isPending}
+          icon
         />
 
         <p className="text-sm">
