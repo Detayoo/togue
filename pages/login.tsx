@@ -63,11 +63,18 @@ const Login = () => {
         />
 
         <BlackButton
-          onClick={() => setShowModal(true)}
-          type="button"
+          // onClick={() => setShowModal(true)}
+          // type="button"
           label="let's go!"
           disabled={isPending}
         />
+
+        <p className="text-sm">
+          have no account?{" "}
+          <button type="button" onClick={() => Router.push("/register")}>
+            register
+          </button>
+        </p>
       </div>
       <BottomSheet showModal={showModal} closeModal={() => setShowModal(false)}>
         <div className="">hey you</div>
