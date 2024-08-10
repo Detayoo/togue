@@ -4,11 +4,15 @@ import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 
 import { loginFn } from "@/api";
+import { BlackButton, BottomSheet } from "@/components";
+import { useBodyScrollLock } from "@/hooks";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  useBodyScrollLock(showModal);
 
-  const { mutateAsync } = useMutation({
+  const { mutateAsync, isPending } = useMutation({
     mutationFn: loginFn,
     onSuccess: ({ error }) => {
       if (error?.message?.toLowerCase() == "email not confirmed") {
@@ -37,26 +41,37 @@ const Login = () => {
       });
     } catch (error) {}
   };
+
   return (
     <form
       onSubmit={handleLogin}
       autoComplete="off"
-      className="flex gap-y-4 flex-col justify-center items-center h-screen"
+      className="flex justify-center items-center h-screen w-full"
     >
-      <input
-        type="email"
-        className="h-11 bg-slate-200"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="text"
-        className="h-11 bg-slate-200"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <div className="flex gap-y-4 flex-col">
+        <input
+          type="email"
+          className="h-11 bg-slate-200"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="text"
+          className="h-11 bg-slate-200"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-      <button>Submit</button>
+        <BlackButton
+          onClick={() => setShowModal(true)}
+          type="button"
+          label="let's go!"
+          disabled={isPending}
+        />
+      </div>
+      <BottomSheet showModal={showModal} closeModal={() => setShowModal(false)}>
+        <div className="">hey you</div>
+      </BottomSheet>
     </form>
   );
 };

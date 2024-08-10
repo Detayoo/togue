@@ -32,6 +32,12 @@ export const Header = () => {
   return (
     <div className="flex justify-between items-center bg-white min-h-[10vh] m:border-b m:px-6">
       <Logo />
+      <button
+        className="hidden m:block"
+        onClick={user ? logout : () => Router.push("/login")}
+      >
+        {user ? "logout" : "login"}
+      </button>
       <div className="flex items-center gap-x-6 m:hidden">
         <button onClick={user ? logout : () => Router.push("/login")}>
           {user ? "logout" : "login"}
