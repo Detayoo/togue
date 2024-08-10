@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-import { Header, PageTitle } from "@/components";
+import { Header, PageTitle, Spinner } from "@/components";
 import { recentPublications } from "@/data";
 import { RecentPublicationType } from "@/types";
-import { Spinner } from "@/components";
+import { AuthRoute } from "@/utils";
 
-export default function Home() {
+const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -41,21 +41,25 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full">
-      <PageTitle name="Togue" />
-      <div className="max-w-[1300px] mx-auto text-white px-10 m:px-0 h-screen">
-        <Header />
-        <div className="h-[90vh] overflow-y-auto m:px-6 py-5 text-sm">
-          <div>
-            <p className="font-SpaceMono-Bold mb-6 uppercase text-[18px]">
-              Recent Publications
-            </p>
-            <div className="min-w-[100%] overflow-x-auto flex gap-x-10">
-              {renderRecentPublications()}
+    <AuthRoute>
+      <div className="w-full">
+        <PageTitle name="Home" />
+        <div className="max-w-[1300px] mx-auto text-white px-10 m:px-0 h-screen">
+          <Header />
+          <div className="h-[90vh] overflow-y-auto m:px-6 py-5 text-sm">
+            <div>
+              <p className="font-SpaceMono-Bold mb-6 text-[18px]">
+                recent publications
+              </p>
+              <div className="min-w-[100%] overflow-x-auto flex gap-x-10">
+                {renderRecentPublications()}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </AuthRoute>
   );
-}
+};
+
+export default Home;

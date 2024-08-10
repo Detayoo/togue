@@ -8,3 +8,5 @@ export type RecentPublicationType = {
   images: string[];
   videos: string[];
 };
+
+export * from './auth'

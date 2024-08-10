@@ -4,7 +4,7 @@ export const Spinner = ({ className }: { className?: string }) => {
       className={`h-[80vh] w-full flex flex-col justify-center items-center ${className}`}
     >
       <div className="spinner" />
-      <p className="mt-4">Just one second..</p>
+      <p className="mt-4">getting things done in the background :)</p>
     </div>
   );
 };

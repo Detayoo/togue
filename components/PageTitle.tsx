@@ -11,7 +11,7 @@ export const PageTitle = ({
 }) => {
   return (
     <Head>
-      <title>{name}</title>
+      <title>Togue | {name}</title>
       <meta name="description" content={description} />
       <meta name="description" content={description} />
       <meta property="og:description" content={description} />
