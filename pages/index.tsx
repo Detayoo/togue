@@ -84,9 +84,9 @@ const Home = () => {
     return recentPublications.map((publication: RecentPublicationType) => {
       return (
         <div key={publication?.id}>
-          <p onClick={handleAddition}>Add to Clients</p>
+          {/* <p onClick={handleAddition}>Add to Clients</p>
           <p onClick={handleDeletion}>delete client</p>
-          <p onClick={handleUpdate}>update client</p>
+          <p onClick={handleUpdate}>update client</p> */}
           <div className="relative w-[350px] h-[290px] m:w-[366px] m:h-[290px] ">
             <Image
               src={publication?.thumbnail}

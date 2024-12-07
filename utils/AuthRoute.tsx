@@ -15,13 +15,13 @@ export const AuthRoute: FC<AuthRouteProps> = ({ children }) => {
 
   if (isFetching) return <Spinner />;
 
-  if (data?.error?.message) {
-    if (data?.error?.message?.toLowerCase() === "auth session missing!") {
-      toast.error("you are not authenticated, behave yourself");
-      Router.push("/login");
-      return;
-    } else return toast.error(data?.error?.message?.toLowerCase());
-  }
+  // if (data?.error?.message) {
+  //   if (data?.error?.message?.toLowerCase() === "auth session missing!") {
+  //     toast.error("you are not authenticated, behave yourself");
+  //     Router.push("/login");
+  //     return;
+  //   } else return toast.error(data?.error?.message?.toLowerCase());
+  // }
 
   return <>{children}</>;
 };
