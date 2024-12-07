@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
+import Router from "next/router";
 
 import { signUpFn } from "@/api";
-import { BlackButton } from "@/components";
+import { BlackButton, PageTitle } from "@/components";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,33 +31,44 @@ const Login = () => {
     } catch (error) {}
   };
   return (
-    <form
-      onSubmit={handleLogin}
-      autoComplete="off"
-      className="flex gap-y-4 flex-col justify-center items-center h-screen"
-    >
-      <div className="flex gap-y-4 flex-col">
-        <input
-          type="email"
-          className="h-11 bg-slate-200"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="text"
-          className="h-11 bg-slate-200"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+    <>
+      <PageTitle name="Get in!" />
+      <form
+        onSubmit={handleLogin}
+        autoComplete="off"
+        className="flex gap-y-4 flex-col justify-center items-center h-screen"
+      >
+        <div className="flex gap-y-4 flex-col">
+          <input
+            type="email"
+            className="h-11 bg-slate-200"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="text"
+            className="h-11 bg-slate-200"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-        <BlackButton
-          // onClick={() => setShowModal(true)}
-          // type="button"
-          label="join the cool kids!"
-          disabled={isPending}
-        />
-      </div>
-    </form>
+          <BlackButton
+            // onClick={() => setShowModal(true)}
+            // type="button"
+            label="join the cool kids!"
+            disabled={isPending}
+            icon
+          />
+
+          <p className="text-sm">
+            already a cool kid??{" "}
+            <button type="button" onClick={() => Router.push("/login")}>
+              login
+            </button>
+          </p>
+        </div>
+      </form>
+    </>
   );
 };
 

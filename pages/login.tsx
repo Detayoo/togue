@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useMutation } from "@tanstack/react-query";
 
 import { loginFn } from "@/api";
-import { BlackButton, BottomSheet } from "@/components";
+import { BlackButton, BottomSheet, PageTitle } from "@/components";
 import { useBodyScrollLock } from "@/hooks";
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -43,43 +43,50 @@ const Login = () => {
   };
 
   return (
-    <form
-      onSubmit={handleLogin}
-      autoComplete="off"
-      className="flex justify-center items-center h-screen w-full"
-    >
-      <div className="flex gap-y-4 flex-col">
-        <input
-          type="email"
-          className="h-11 bg-slate-200"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="text"
-          className="h-11 bg-slate-200"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+    <>
+      <PageTitle name="Home" />
+      <form
+        onSubmit={handleLogin}
+        autoComplete="off"
+        className="flex justify-center items-center h-screen w-full"
+      >
+        <div className="flex gap-y-4 flex-col">
+          <input
+            type="email"
+            className="h-11 bg-slate-200"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="text"
+            className="h-11 bg-slate-200"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-        <BlackButton
-          // onClick={() => setShowModal(true)}
-          // type="button"
-          label="let's go!"
-          disabled={isPending}
-        />
+          <BlackButton
+            // onClick={() => setShowModal(true)}
+            // type="button"
+            label="let's go!"
+            disabled={isPending}
+            icon
+          />
 
-        <p className="text-sm">
-          have no account?{" "}
-          <button type="button" onClick={() => Router.push("/register")}>
-            register
-          </button>
-        </p>
-      </div>
-      <BottomSheet showModal={showModal} closeModal={() => setShowModal(false)}>
-        <div className="">hey you</div>
-      </BottomSheet>
-    </form>
+          <p className="text-sm">
+            have no account?{" "}
+            <button type="button" onClick={() => Router.push("/register")}>
+              register
+            </button>
+          </p>
+        </div>
+        <BottomSheet
+          showModal={showModal}
+          closeModal={() => setShowModal(false)}
+        >
+          <div className="">hey you</div>
+        </BottomSheet>
+      </form>
+    </>
   );
 };
 
